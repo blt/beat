@@ -1,0 +1,6 @@
+app.plt
+.ct
+deps/
+.eunit
+*.beam
+_rel/
