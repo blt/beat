@@ -10,9 +10,9 @@
          code_change/3
          ]).
 
--record(state, {timeout      = timer:seconds(1) :: pos_integer(),
-                count        = 0                :: non_neg_integer(),
-                linked_procs = []               :: [{pid(), reference()}]}).
+-record(state, {timeout      = timer:seconds(10) :: pos_integer(),
+                count        = 0                 :: non_neg_integer(),
+                linked_procs = []                :: [{pid(), reference()}]}).
 
 -export([
          start_link/0,
@@ -82,8 +82,10 @@ handle_info({'DOWN', MonRef, process, Pid, _Info},
 terminate(_Reason, #state{}=_S) ->
     ok.
 
-code_change(_OldVsn, #state{}=_S, _Extra) ->
-    {error, not_implemented}.
+code_change(_OldVsn, #state{}=S, [from1to2]) ->
+    {ok, S#state{timeout=10}};
+code_change(_OldVsn, #state{}=S, [from2to1]) ->
+    {ok, S#state{timeout=1}}.
 
 %% ===================================================================
 %%  Internal Functions
@@ -138,14 +140,22 @@ protocol_test_() ->
      }
     ].
 
+code_change_test_() ->
+    S1  = #state{timeout=1},
+    S10 = #state{timeout=10},
+
+    [
+     ?_assertMatch({ok, S1},  code_change(old_vsn, S10, [from2to1])),
+     ?_assertMatch({ok, S10}, code_change(old_vsn, S1, [from1to2]))
+    ].
+
 callback_test_() ->
     S = #state{},
 
     [
      ?_assertMatch({ok, S},                  init([])),
      ?_assertMatch({reply, ok, S},           handle_call(request, from, S)),
-     ?_assertMatch(ok,                       terminate(reason, S)),
-     ?_assertMatch({error, not_implemented}, code_change(old_vsn, S, extra))
+     ?_assertMatch(ok,                       terminate(reason, S))
     ].
 
 -endif.

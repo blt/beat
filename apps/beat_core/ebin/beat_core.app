@@ -1,7 +1,7 @@
 {application, beat_core,
  [
   {description, "The core application of the 'beat' project'"},
-  {vsn, "2013.1"},
+  {vsn, "2013.2"},
   {modules,
    [
     beat_core_app,

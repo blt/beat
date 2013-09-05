@@ -1,0 +1,8 @@
+{"2013.2",
+    [{"2013.1", [
+        {update,beat_core_beater,{advanced,[from1to2]}}
+    ]}],
+    [{"2013.1",[
+        {update,beat_core_beater,{advanced,[from2to1]}}
+    ]}]
+}.
