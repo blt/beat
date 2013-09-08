@@ -7,7 +7,7 @@ all: deps compile
 deps:
 	@$(REBAR) get-deps
 
-compile:
+compile: deps
 	@$(REBAR) compile
 
 app.plt:
@@ -25,6 +25,9 @@ validate: dialyze test
 
 release: clean validate
 	@$(RELX)
+
+relup: clean validate
+	@$(RELX) relup
 
 repl:
 	_rel/bin/locker

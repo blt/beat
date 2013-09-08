@@ -10,9 +10,9 @@
          code_change/3
          ]).
 
--record(state, {timeout      = timer:seconds(10) :: pos_integer(),
-                count        = 0                 :: non_neg_integer(),
-                linked_procs = []                :: [{pid(), reference()}]}).
+-record(state, {timeout      = timer:seconds(1) :: pos_integer(),
+                count        = 0                :: non_neg_integer(),
+                linked_procs = []               :: [{pid(), reference()}]}).
 
 -export([
          start_link/0,
