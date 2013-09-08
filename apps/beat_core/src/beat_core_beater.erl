@@ -10,9 +10,9 @@
          code_change/3
          ]).
 
--record(state, {timeout      = timer:seconds(1) :: pos_integer(),
-                count        = 0                :: non_neg_integer(),
-                linked_procs = []               :: [{pid(), reference()}]}).
+-record(state, {timeout      = timer:seconds(10) :: pos_integer(),
+                count        = 0                 :: non_neg_integer(),
+                linked_procs = []                :: [{pid(), reference()}]}).
 
 -export([
          start_link/0,
@@ -83,9 +83,9 @@ terminate(_Reason, #state{}=_S) ->
     ok.
 
 code_change(_OldVsn, #state{}=S, [from1to2]) ->
-    {ok, S#state{timeout=10}};
+    {ok, S#state{timeout=timer:seconds(10)}};
 code_change(_OldVsn, #state{}=S, [from2to1]) ->
-    {ok, S#state{timeout=1}}.
+    {ok, S#state{timeout=timer:seconds(1)}}.
 
 %% ===================================================================
 %%  Internal Functions
@@ -141,8 +141,8 @@ protocol_test_() ->
     ].
 
 code_change_test_() ->
-    S1  = #state{timeout=1},
-    S10 = #state{timeout=10},
+    S1  = #state{timeout=timer:seconds(1)},
+    S10 = #state{timeout=timer:seconds(10)},
 
     [
      ?_assertMatch({ok, S1},  code_change(old_vsn, S10, [from2to1])),
