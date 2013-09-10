@@ -7,14 +7,13 @@ rm -rf _rel
 
 git checkout v1
 make release
-tar cvzf beat-0.1.0.tar.gz -C _rel .
 
 git checkout v2
 make relup
 
 mkdir -p /tmp/beat
 cp beat-0.1.0.tar.gz /tmp
-cp _rel/beat.tar.gz /tmp/beat-0.1.1.tar.gz
+cp _rel/beat-0.1.1.tar.gz /tmp/beat-0.1.1.tar.gz
 
 cd /tmp/beat
 tar xf /tmp/beat-0.1.0.tar.gz
