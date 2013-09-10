@@ -27,7 +27,7 @@ release: clean validate
 	@$(RELX)
 
 relup: clean validate
-	@$(RELX) relup
+	@$(RELX) release relup
 
 repl:
 	_rel/bin/locker
