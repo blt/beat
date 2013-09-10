@@ -11,21 +11,17 @@ tar cvzf beat-0.1.0.tar.gz -C _rel .
 
 git checkout v2
 make relup
-tar cvzf beat-0.1.1.tar.gz -C _rel .
 
 mkdir -p /tmp/beat
-cp _rel/releases/beat-0.1.1/beat.rel /tmp/
 cp beat-0.1.0.tar.gz /tmp
-cp beat-0.1.1.tar.gz /tmp
+cp _rel/beat.tar.gz /tmp/beat-0.1.1.tar.gz
 
 cd /tmp/beat
 tar xf /tmp/beat-0.1.0.tar.gz
 ./bin/beat-0.1.0 start
 
-mkdir releases/beat-0.1.1
-cp /tmp/beat-0.1.1.tar.gz releases/beat-0.1.1/
-cp /tmp/beat.rel releases/beat-0.1.1/beat-0.1.1.rel
+mkdir -p releases/0.1.1
+cp /tmp/beat-0.1.1.tar.gz releases/0.1.1/beat.tar.gz
 
-rm /tmp/beat.rel
 rm /tmp/beat-0.1.0.tar.gz
 rm /tmp/beat-0.1.1.tar.gz
