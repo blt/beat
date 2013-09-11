@@ -17,10 +17,13 @@ cp _rel/beat-0.1.1.tar.gz /tmp/beat-0.1.1.tar.gz
 
 cd /tmp/beat
 tar xf /tmp/beat-0.1.0.tar.gz
+./bin/beat-0.1.0 stop
 ./bin/beat-0.1.0 start
 
 mkdir -p releases/0.1.1
 cp /tmp/beat-0.1.1.tar.gz releases/0.1.1/beat.tar.gz
+
+./bin/beat-0.1.0 upgrade "0.1.1/beat"
 
 rm /tmp/beat-0.1.0.tar.gz
 rm /tmp/beat-0.1.1.tar.gz
