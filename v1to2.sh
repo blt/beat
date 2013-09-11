@@ -12,7 +12,7 @@ git checkout v2
 make relup
 
 mkdir -p /tmp/beat
-cp beat-0.1.0.tar.gz /tmp
+cp _rel/beat-0.1.0.tar.gz /tmp
 cp _rel/beat-0.1.1.tar.gz /tmp/beat-0.1.1.tar.gz
 
 cd /tmp/beat
