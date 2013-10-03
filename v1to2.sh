@@ -30,7 +30,13 @@ cp /tmp/beat-0.1.1.tar.gz releases/0.1.1/beat.tar.gz
 sleep 5s # let the system boot
 
 echo "UPGRADING NODE TO 0.1.1"
-./bin/beat-0.1.0 upgrade "0.1.1/beat"
+./bin/beat-0.1.0 install "0.1.1"
+
+echo "DOWNGRADE NODE TO 0.1.0"
+./bin/beat-0.1.0 upgrade "0.1.0"
+
+echo "UPGRADING NODE TO 0.1.1"
+./bin/beat-0.1.0 install "0.1.1"
 
 rm /tmp/beat-0.1.0.tar.gz
 rm /tmp/beat-0.1.1.tar.gz
