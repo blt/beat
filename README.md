@@ -18,3 +18,7 @@ installed on your system and do the following:
 > _rel/bin/beat console
 ```
 Now connect to localhost port 27182 and enjoy the sweet flow of integers.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/blt/beat/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
